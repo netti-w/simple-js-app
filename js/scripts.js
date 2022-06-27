@@ -1,4 +1,5 @@
 alert('Hello world');
 
-let favoriteFood = "Boiled Eggs"
-document.write(favoriteFood)
+//exercise purpose creating variables
+let favoriteFood = "Boiled Eggs";
+document.write(favoriteFood);
