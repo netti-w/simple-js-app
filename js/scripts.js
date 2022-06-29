@@ -1,14 +1,14 @@
-pokemonList = [
+let pokemonList = [
   {
     name: 'Charmander',
-    height: 6,
+    height: 0.6,
     types: [
     'fire'
     ],
   },
   {
     name: 'Weedle',
-    height: 3,
+    height: 0.3,
     types: [
     'bug',
     'poison'
@@ -16,7 +16,7 @@ pokemonList = [
   },
   {
     name: 'Parasect',
-    height: 10,
+    height: 1,
     types: [
     'grass',
     'bug'
@@ -24,9 +24,13 @@ pokemonList = [
   },
   {
     name: 'Metapod',
-    height: 7, 
+    height: 0.7,
     types: [
     'bug'
     ]
   }
 ];
+
+for (let i=0; i < pokemonList.length; i++) {
+  document.write(`"${pokemonList[i].name}" (height: ${pokemonList[i].height})  `);
+}
