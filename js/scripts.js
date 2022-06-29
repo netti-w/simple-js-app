@@ -31,6 +31,16 @@ let pokemonList = [
   }
 ];
 
+// Displaying all the pokemon names and height of all objects in PokemonList
 for (let i=0; i < pokemonList.length; i++) {
-  document.write(`"${pokemonList[i].name}" (height: ${pokemonList[i].height})  `);
+
+  // conditional checks the height in each object in the array, if greater than 0.7
+  if(pokemonList[i].height > 0.7){
+    document.write(`<p>"${pokemonList[i].name}" (height: ${pokemonList[i].height}) Wow, that’s big!</p>`);
+  }
+  else {
+    document.write(`<p>"${pokemonList[i].name}" (height: ${pokemonList[i].height})</p>`);
+    /* Another way to write the output
+    document.write(pokemonList[i].name + " (height: " + pokemonList[i].height" <br>");*/
+  }
 }
