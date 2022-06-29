@@ -1,0 +1,32 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16;
+  line-height: 1.6;
+  color: black;
+  padding: 20px;
+}
+
+h1 {
+  font-family: 'Signika';
+  font-weight: 600;
+  font-size: 50;
+  line-height: 1;
+  color: #0075BE;
+}
+
+h2 {
+  font-family: 'Signika';
+  font-weight: 400;
+  font-size: 30;
+  line-height: 1;
+  color: #0A285F;
+}
+
+h2 {
+  font-family: 'Signika';
+  font-weight: 300;
+  font-size: 25;
+  line-height: 1;
+  color: #0A285F;
+}
