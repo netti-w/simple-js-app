@@ -1,4 +1,5 @@
 let pokemonRepository = (function () {
+
   let pokemonList = [
     {
       name: 'Charmander',
@@ -38,21 +39,24 @@ let pokemonRepository = (function () {
   function add (item) {
     return pokemonList.push(item);
   }
+  function addListItem(pokemon) {
+    let list = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('button-class');
+    listItem.appendChild(button);
+    list.appendChild(listItem);
+  }
+
   return {
     getAll: getAll,
-    add: add
+    add: add,
+    addListItem: addListItem
   }
 
 })();
 
-// Displaying all the pokemon names and height of all objects in PokemonList with an forEach loop
 pokemonRepository.getAll().forEach(function (pokemon) {
-  if(pokemon.height > 0.7){
-    document.write(`<p>"${pokemon.name}" (height: ${pokemon.height}) - Wow, that’s big!</p>`);
-    /* Another way to write the output
-    document.write('<p>'+ pokemon.name + '(height: ' + pokemon.height + ') - Wow, that’s big!'+'</p>');*/
-  }
-  else {
-    document.write(`<p>"${pokemon.name}" (height: ${pokemon.height})</p>`);
-  }
+  pokemonRepository.addListItem(pokemon);
 });
