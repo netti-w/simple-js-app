@@ -54,6 +54,12 @@ h2 {
   border-radius: 10px;
 }
 
+/* event listener changes button class to green background
+by clicking the button */
+.button-class--green {
+  background-color: #4DAD5B;
+}
+
 @media all and (max-width: 500px) {
   .button-class {
     width: 100%;
