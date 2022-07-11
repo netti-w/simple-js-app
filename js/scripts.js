@@ -7,17 +7,17 @@ let pokemonRepository = (function () {
   }
 
   function add(pokemon) {
-     /* Still does not work
-    if (
-      typeof === 'object' &&
-      'name' in pokemon &&
-      'detailsUrl' in pokemon
-    ){
-       return pokemonList.push(pokemon);
-    }
-    else {
-      console.log('Pokemon data format is not correct');
-    } */
+  // Still does not work
+    // if (
+    //   typeof === 'object' &&
+    //   'name' in pokemon &&
+    //   'detailsUrl' in pokemon
+    // ){
+    //    return pokemonList.push(pokemon);
+    // }
+    // else {
+    //   console.log('Pokemon data format is not correct');
+    // }
     pokemonList.push(pokemon);
   }
 
@@ -32,12 +32,12 @@ let pokemonRepository = (function () {
     listItem.appendChild(button);
     list.appendChild(listItem);
 
-    /* Event listener shows each pokemon item array in the console on click
-    and changes colour to green on click */
+    // Event listener shows pokemon details in the console on click
     button.addEventListener('click', function (event) {
       showDetails(pokemon);
+     /* TESTING PURPOSE - toggles colour from grey to green on click event listener
       let target = event.target;
-      target.classList.toggle('button-class--green');
+      target.classList.toggle('button-class--green'); */
     });
   }
 
