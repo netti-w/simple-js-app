@@ -3,8 +3,9 @@ let pokemonRepository = (function () {
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function getAll() {
-      return pokemonList;
-    }
+    return pokemonList;
+  }
+
   function add(pokemon) {
      /* Still does not work
     if (
@@ -84,7 +85,6 @@ let pokemonRepository = (function () {
     loadDetails: loadDetails,
     showDetails: showDetails
   }
-
 })();
 
 pokemonRepository.loadList().then(function() {
