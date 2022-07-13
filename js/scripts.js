@@ -71,7 +71,7 @@ let pokemonRepository = (function () {
   // Promise fetching data asynchronously
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
-      showModal(pokemon);
+      showModal(pokemon)
     });
   }
 
@@ -92,11 +92,17 @@ let pokemonRepository = (function () {
     titleElement.innerText = `${pokemon.name} (#${pokemon.id})`;
 
     let contentElement = document.createElement('p');
-    contentElement.innerHTML = `Height: ${pokemon.height}
-    <br>Weight: ${pokemon.weight}`;
+    contentElement.innerHTML = `Height: ${pokemon.height} cm
+    <br>Weight: ${pokemon.weight} g`;
 
     let typesElement = document.createElement('p');
-    typesElement.innerText = `Types: ${pokemon.types}`;
+    typesElement.innerText = 'Types: \n';
+
+    // Looping through types array to add all types in types details
+    pokemon.types.forEach(function(type) {
+      console.log(type.type.name);
+      typesElement.innerText += `${type.type.name}  \n`;
+    });
 
     let imageElement = document.createElement('img');
     imageElement.src = pokemon.imageUrl;
@@ -105,6 +111,7 @@ let pokemonRepository = (function () {
     modal.appendChild(titleElement);
     modal.appendChild(imageElement);
     modal.appendChild(contentElement);
+    modal.appendChild(typesElement);
     modalContainer.appendChild(modal);
     modalContainer.classList.add('is-visible');
   }
