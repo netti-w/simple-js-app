@@ -11,13 +11,28 @@ let pokemonRepository = (function () {
     pokemonList.push(pokemon);
   }
 
+  // function addListItem(pokemon) {
+  //   // Creates a pokemon item as a button in the HTML list that has pokemon-list class and assignes a button class
+  //   let list = document.querySelector('.pokemon-list');
+  //   let listItem = document.createElement('li');
+  //   let listButton = document.createElement('button');
+  //   listButton.innerText = pokemon.name;
+  //   listButton.classList.add('button-class');
+  //   listItem.appendChild(listButton);
+  //   list.appendChild(listItem);
+  //   listButtonEventListener(listButton, pokemon);
+  // }
+
   function addListItem(pokemon) {
     // Creates a pokemon item as a button in the HTML list that has pokemon-list class and assignes a button class
-    let list = document.querySelector('.pokemon-list');
+    let list = document.querySelector('.list-group');
     let listItem = document.createElement('li');
+    listItem.classList.add('group-list-item');
     let listButton = document.createElement('button');
+    listButton.classList.add('btn');
+    listButton.classList.add('btn-outline-primary');
+    listButton.classList.add('btn-block');
     listButton.innerText = pokemon.name;
-    listButton.classList.add('button-class');
     listItem.appendChild(listButton);
     list.appendChild(listItem);
     listButtonEventListener(listButton, pokemon);
