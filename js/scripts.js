@@ -87,6 +87,7 @@ let pokemonRepository = (function () {
     let weightElement = (`Weight: ${pokemon.weight}<br>`);
     let typesElement = (`Types: ${pokemon.types}<br>`);
     let imageElement = document.createElement('img');
+    imageElement.setAttribute('aria-label', 'front picture of pokemon');
     imageElement.src = pokemon.imageUrl;
 
     modalTitle.append(titleElement);
