@@ -15,11 +15,9 @@ let pokemonRepository = (function () {
     // Creates a pokemon item as a button in the HTML list that has pokemon-list class and assignes a button class
     let list = document.querySelector('.list-group');
     let listItem = document.createElement('li');
-    listItem.classList.add('group-list-item');
+    $(listItem).addClass('group-list-item');
     let listButton = document.createElement('button');
-    listButton.classList.add('btn');
-    listButton.classList.add('btn-outline-primary');
-    listButton.classList.add('btn-block');
+    $(listButton).addClass('btn btn-lg btn-outline-primary btn-block my-2');
     listButton.innerText = pokemon.name;
     listItem.appendChild(listButton);
     list.appendChild(listItem);
