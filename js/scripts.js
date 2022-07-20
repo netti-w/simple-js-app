@@ -35,6 +35,9 @@ let pokemonRepository = (function () {
     listButton.innerText = pokemon.name;
     listItem.appendChild(listButton);
     list.appendChild(listItem);
+    listButton.setAttribute('type', 'button');
+    listButton.setAttribute('data-toggle', 'modal');
+    listButton.setAttribute('data-target', '#pokemon-modal');
     listButtonEventListener(listButton, pokemon);
   }
 
@@ -77,7 +80,7 @@ let pokemonRepository = (function () {
       pokemon.imageUrl = details.sprites.front_default;
       pokemon.height = details.height;
       pokemon.weight = details.weight;
-      pokemon.types = details.types;
+      pokemon.types = details.types.map((type) => type.type.name).join(', ');
     }).catch(function (e) {
       console.error(e);
     });
@@ -90,66 +93,88 @@ let pokemonRepository = (function () {
     });
   }
 
+  // Modal
   function showModal(pokemon) {
-    // Clear all existing modal content
-    modalContainer.innerHTML = '';
+    let modalTitle = $('.modal-title');
+    let modalBody = $('.modal-body');
 
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
+    // Empty existing modal content
+    modalTitle.empty();
+    modalBody.empty();
 
-    // Add the new modal content
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'X';
-    closeButtonElement.addEventListener('click', hideModal);
-
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = `${pokemon.name} (#${pokemon.id})`;
-
-    let contentElement = document.createElement('p');
-    contentElement.innerHTML = `Height: ${pokemon.height} cm
-    <br>Weight: ${pokemon.weight} g`;
-
-    let typesElement = document.createElement('p');
-    typesElement.innerText = 'Types: \n';
-
-    // Looping through types array to add all types in types details
-    pokemon.types.forEach(function(type) {
-      console.log(type.type.name);
-      typesElement.innerText += `${type.type.name}  \n`;
-    });
-
+    let titleElement = (`${pokemon.name} (#${pokemon.id})`);
+    let heightElement = (`Height: ${pokemon.height}<br>`);
+    let weightElement = (`Weight: ${pokemon.weight}<br>`);
+    let typesElement = (`Types: ${pokemon.types}<br>`);
     let imageElement = document.createElement('img');
     imageElement.src = pokemon.imageUrl;
 
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(imageElement);
-    modal.appendChild(contentElement);
-    modal.appendChild(typesElement);
-    modalContainer.appendChild(modal);
-    modalContainer.classList.add('is-visible');
+    modalTitle.append(titleElement);
+    modalBody.append(heightElement);
+    modalBody.append(weightElement);
+    modalBody.append(typesElement);
+    modalBody.append(imageElement);
   }
 
-  function hideModal() {
-    modalContainer.classList.remove('is-visible');
-  }
-
-  // Adding eventListener closing modal if ESC key is pressed AND only if modal is open
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-      hideModal();
-    }
-  });
-
-  modalContainer.addEventListener('click', (e) => {
-  // Since this is also triggered when clicking INSIDE the modal
-  // We only want to close if the user clicks directly on the overlay
-    let target = e.target;
-    if (target === modalContainer) {
-      hideModal();
-    }
-  });
+  // function showModal(pokemon) {
+  //   modalContainer.innerHTML = '';
+  //
+  //   let modal = document.createElement('div');
+  //   modal.classList.add('modal');
+  //
+  //   // Add the new modal content
+  //   let closeButtonElement = document.createElement('button');
+  //   closeButtonElement.classList.add('modal-close');
+  //   closeButtonElement.innerText = 'X';
+  //   closeButtonElement.addEventListener('click', hideModal);
+  //
+  //   let titleElement = document.createElement('h1');
+  //   titleElement.innerText = `${pokemon.name} (#${pokemon.id})`;
+  //
+  //   let contentElement = document.createElement('p');
+  //   contentElement.innerHTML = `Height: ${pokemon.height} cm
+  //   <br>Weight: ${pokemon.weight} g`;
+  //
+  //   let typesElement = document.createElement('p');
+  //   typesElement.innerText = 'Types: \n';
+  //
+  //   // Looping through types array to add all types in types details
+  //   pokemon.types.forEach(function(type) {
+  //     console.log(type.type.name);
+  //     typesElement.innerText += `${type.type.name}  \n`;
+  //   });
+  //
+  //   let imageElement = document.createElement('img');
+  //   imageElement.src = pokemon.imageUrl;
+  //
+  //   modal.appendChild(closeButtonElement);
+  //   modal.appendChild(titleElement);
+  //   modal.appendChild(imageElement);
+  //   modal.appendChild(contentElement);
+  //   modal.appendChild(typesElement);
+  //   modalContainer.appendChild(modal);
+  //   modalContainer.classList.add('is-visible');
+  // }
+  //
+  // function hideModal() {
+  //   modalContainer.classList.remove('is-visible');
+  // }
+  //
+  // // Adding eventListener closing modal if ESC key is pressed AND only if modal is open
+  // window.addEventListener('keydown', (e) => {
+  //   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+  //     hideModal();
+  //   }
+  // });
+  //
+  // modalContainer.addEventListener('click', (e) => {
+  // // Since this is also triggered when clicking INSIDE the modal
+  // // We only want to close if the user clicks directly on the overlay
+  //   let target = e.target;
+  //   if (target === modalContainer) {
+  //     hideModal();
+  //   }
+  // });
 
   return {
     getAll: getAll,
