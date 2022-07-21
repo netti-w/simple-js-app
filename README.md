@@ -17,6 +17,12 @@ The search function in the navigation bar allows searching for Pokémon names, d
 
 ## Project screenshots
 
+Pokémon names:
+![](img/screenshots/screenshot_pokedex.png)
+
+Pokémon modal:
+![](img/screenshots/screenshot_pokedex_modal.png)
+
 ## Project Repository
 [simple-js-app](https://github.com/netti-w/simple-js-app)
 
