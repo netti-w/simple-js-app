@@ -1,7 +1,6 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-  let modalContainer = document.querySelector('#modal-container');
 
   function getAll() {
     return pokemonList;
@@ -15,23 +14,15 @@ let pokemonRepository = (function () {
     // Creates a pokemon item as a button in the HTML list that has pokemon-list class and assignes a button class
     let list = document.querySelector('.list-group');
     let listItem = document.createElement('li');
-    $(listItem).addClass('group-list-item');
+    listItem.classList.add('group-list-item');
     let listButton = document.createElement('button');
-    $(listButton).addClass('btn btn-lg btn-outline-primary btn-block my-2');
+    listButton.classList.add('btn', 'btn-lg', 'btn-outline-primary', 'btn-block my-2');
     listButton.innerText = pokemon.name;
     listItem.appendChild(listButton);
     list.appendChild(listItem);
     listButton.setAttribute('type', 'button');
     listButton.setAttribute('data-toggle', 'modal');
     listButton.setAttribute('data-target', '#pokemon-modal');
-    listButtonEventListener(listButton, pokemon); // calling button event listener function
-  }
-
-  // Event listener open modal on click
-  function listButtonEventListener(listButton, pokemon) {
-    listButton.addEventListener('click', function (event) {
-      showDetails(pokemon);
-    });
   }
 
   function loadList() {
@@ -75,8 +66,8 @@ let pokemonRepository = (function () {
 
   // Modal
   function showModal(pokemon) {
-    let modalTitle = $('.modal-title');
-    let modalBody = $('.modal-body');
+    let modalTitle = document.querySelector('.modal-title');
+    let modalBody = document.querySelector('.modal-body');
 
     // Empty existing modal content
     modalTitle.empty();
