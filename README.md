@@ -1,9 +1,24 @@
 ### JavaScript App (Pokédex) ###
-Object is to build a small web application with HTML, CSS, and JavaScript that loads
-data from an external API and enables the viewing of data points in detail.
+---
+## Description ##
+This web application is built with HTML, CSS, and Javascript that loads data from an external API and enables the viewing of data points in detail. It shows the first 150 Pokémon. Clicking on Pokémon name opens a modal, displaying further details of the Pokémon. The modal can be closed by clicking on the 'x', outside the modal window or pressing the 'ESC' key.
+The search function in the navigation bar allows searching for Pokémon names, displaying all names that match the criteria entered in the search field. (The search button however does not work)
+---
+## Technologies used ##
+- HTML
+- CSS
+- Vanilla JavaScript
+- jQuery
+- Bootstrap
+- Pokemon API [Link(https://pokeapi.co/api/v2/pokemon/?limit=20)]
+- Ajax
+- Fetch polyfill
+- Promise polyfill
 
-## How to get the project running ##
-(tba)
+## Project screenshots ##
 
-## Project dependencies ##
-(tba)
+## Project Repository ##
+[simple-js-app](https://github.com/netti-w/simple-js-app)
+
+## Project link ##
+[Pokédex App](https://netti-w.github.io/simple-js-app/)
