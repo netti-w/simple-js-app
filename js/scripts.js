@@ -11,13 +11,19 @@ let pokemonRepository = (function () {
     pokemonList.push(pokemon);
   }
 
+  function search(name) {
+    let result = getAll().filter((pokemon) => pokemon.name === name);
+    // filter returns an array, so we need to get the pokemon by index
+    return result[0];
+  }
+
   function addListItem(pokemon) {
     // Creates a pokemon item as a button in the HTML list that has pokemon-list class and assignes a button class
     let list = document.querySelector('.list-group');
     let listItem = document.createElement('li');
     listItem.classList.add('group-list-item');
     let listButton = document.createElement('button');
-    listButton.classList.add('btn','btn-lg','btn-outline-primary','btn-block', 'my-2');
+    listButton.classList.add('btn','btn-lg','btn-outline-primary','btn-block', 'my-2', 'text-capitalize', 'pokemon-name');
     listButton.innerText = pokemon.name;
     listItem.appendChild(listButton);
     list.appendChild(listItem);
@@ -100,6 +106,7 @@ let pokemonRepository = (function () {
   return {
     getAll: getAll,
     add: add,
+    search: search,
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
@@ -113,3 +120,25 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
+
+//search function
+function searchFunction(event) {
+  let pokemonNames = document.getElementsByClassName('pokemon-name');
+  let { value } = event.target;
+  let searchQuery = value.toLowerCase();
+  for (let pokemonName of pokemonNames) {
+    let name = pokemonName.textContent.toLowerCase();
+    //display pokemon name if it contains value inside of search
+    if (name.includes(searchQuery)) {
+      pokemonName.closest('li').style.display = 'inline-block';
+    } else {
+      pokemonName.closest('li').style.display = 'none';
+    }
+  }
+}
+
+let search = document.getElementById('searchValue');
+search.addEventListener('keyup', searchFunction);
+// eventhandler on click does not work
+// let search = document.getElementById('searchButton');
+// search.addEventListener('click', searchFunction);
